@@ -1,3 +1,5 @@
+# ./hfd.sh HuggingFaceFW/fineweb-edu --dataset --tool aria2c -x 4 --include "sample/100BT/*" --local-dir /root/autodl-tmp/cache/fineweb-edu
+
 import argparse
 import hashlib
 import pickle
@@ -116,7 +118,7 @@ def main():
 	if args.resume and args.overflow:
 		raise ValueError("--resume and --overwrite cannot be used together")
 	
-	output_dir = Path(args.outout_dir).resolve() if args.output_dir else Path(__file__).resolve().parent
+	output_dir = Path(args.output_dir).resolve() if args.output_dir else Path(__file__).resolve().parent
 	output_dir.mkdir(parents=True, exist_ok=True)
 	train_path = output_dir / "train.bin"
 	val_path = output_dir / "val.bin"
@@ -180,7 +182,7 @@ def main():
 				docs[split] += 1
 				progress.update(token_count)
 				progress.set_postfix(
-					train_b=f"{counts['train'] / 1e9:.2f}"
+					train_b=f"{counts['train'] / 1e9:.2f}",
 					val_m=f"{counts["val"] / 1e6:.1f}"
 				)
 
